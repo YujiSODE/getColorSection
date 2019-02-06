@@ -149,13 +149,12 @@
 				}
 			},false);
 			//### button event ###
-			LeftB.addEventListener('click',function(){
+			LeftB.addEventListener('click',()=>{
 				slf.document.getElementById('formDiv').className='divLeft';
 			},false);
-			RightB.addEventListener('click',function(){
+			RightB.addEventListener('click',()=>{
 				slf.document.getElementById('formDiv').className='divRight';
 			},false);
-			//ScanB.addEventListener('click',function(){
 			ScanB.addEventListener('click',()=>{
 				//new value for width of canvas to output [cf. "getColorSection.js"]: w0*(1+data)*1.1=100*(1+1.0)*1.1
 				cOut.width=220;
