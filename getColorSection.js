@@ -43,8 +43,8 @@
 function getColorSection(srcCanvas,rgb){
 	// - srcCanvas: target canvas element to scan
 	// - rgb: coefficient array ([r,g,b]) for a value V=r*R+g*G+b*B
-	rgb=!rgb?[1,1,1]:rgb;
 	rgb=rgb.map(e=>Math.abs(e));
+	rgb=(rgb[0]+rgb[1]+rgb[2])<1?[+1,+1,+1]:rgb;
 	var slf=window;
 	//=== function that draws a columnar section on target canvas tag. ===
 	var getColumnarSection=function(canvas,x0,y0,w0,DATA,left) {
@@ -57,6 +57,7 @@ function getColorSection(srcCanvas,rgb){
 		var X=x0,Y=y0,ctx=canvas.getContext('2d'),W=0,H=0,R=0,G=0,B=0,_log='nodata';
 		X=!left?0:X;
 		for(var i=0;i<DATA.length;i+=1){
+			DATA[i]=!DATA[i]?0:DATA[i];
 			R=Math.floor(DATA[i]*255);
 			B=Math.floor((1-DATA[i])*255);
 			G=255-Math.abs(R-B);
@@ -73,7 +74,7 @@ function getColorSection(srcCanvas,rgb){
 		/*== head part of eventlistener ==*/
 		'this.addEventListener(\'message\',',
 		/*== dealing with pixel data ==*/
-		'function(e){var d=e.data,tgt=d.data,tgtW=d.width,tgtH=d.height,R=[],k=0,subR=0;',
+		'function(e){var d=e.data,tgt=d.data,tgtW=d.width,tgtH=d.height,R=[],k=0,subR=0,',
 		/*-- total value of max --*/
 		'rgbMax=255*('+rgb.join('+')+');',
 		'for(var i=0;i<tgtH;i+=1){R[i]=0;subR=0;',
