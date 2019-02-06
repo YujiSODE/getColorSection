@@ -6,7 +6,7 @@
 *	This software is released under the MIT License.
 *	See LICENSE or http://opensource.org/licenses/mit-license.php
 *===================================================================
-* Tool that draws a columnar color section by given RGB values of the canvas tag
+* Tool that draws a columnar color section by given RGB values of the canvas
 *=== Synopsis ===
 * `var scan=getColorSection(srcCanvas,[r,g,b]);`
 * it returns function to scan target canvas element
@@ -39,7 +39,7 @@
 * - Sode, Y. 2015. getColorSection.js (see `getColorSection_2015.js`)
 */
 //===================================================================
-//Tool that draws a columnar color section by given rgb values of the canvas tag
+//Tool that draws a columnar color section by given rgb values of the canvas
 function getColorSection(srcCanvas,rgb){
 	// - srcCanvas: target canvas element to scan
 	// - rgb: coefficient array ([r,g,b]) for a value V=r*R+g*G+b*B
