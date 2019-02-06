@@ -60,7 +60,8 @@
 				<button id='leftB'>Left</button>
 				<button id='rightB'>Right</button>
 				<!-- buttons to scan image -->
-				<button id='scanB'>Scan image</button>
+				<button id='scanB'>Scan</button>
+				<button id='fixedScanB'>Fixed Scan</button>
 			</div>
 			<form id='control'>
 				<!-- source image and size of canvas -->
@@ -112,6 +113,7 @@
 				LeftB=slf.document.getElementById('leftB'),
 				RightB=slf.document.getElementById('rightB'),
 				ScanB=slf.document.getElementById('scanB'),
+				FixedScanB=slf.document.getElementById('fixedScanB'),
 				/*form inputs: Canvas*/
 				img=slf.document.getElementById('inputImg'),
 				imgLength=0,
@@ -160,7 +162,14 @@
 				cOut.width=220;
 				cOut.height=Height.value;
 				cOut.getContext('2d').clearRect(0,0,cOut.width,cOut.height);
-				return scan(cOut,xScan.value,wScan.value,false);
+				scan(cOut,xScan.value,wScan.value,false);
+			},false);
+			FixedScanB.addEventListener('click',()=>{
+				//new value for width and height of canvas to output
+				cOut.width=Width.value;
+				cOut.height=Height.value;
+				cOut.getContext('2d').drawImage(_IMG,0,0);
+				scan(cOut,xScan.value,wScan.value,true);
 			},false);
 		}());
 	</script>
