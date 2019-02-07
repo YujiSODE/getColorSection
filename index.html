@@ -1,6 +1,6 @@
 <!--
 /*getColorSection
-* getColorSection_web.html
+* index.html
 *===================================================================
 *	Copyright (c) 2019 Yuji SODE <yuji.sode@gmail.com>
 *
@@ -15,7 +15,7 @@
 	<head>
 		<meta charset='utf-8'>
 		<meta name='description' content="Tool that draws a columnar color section by given RGB values of the canvas. This program is web version of getColorSection.">
-		<title>getColorSection_web</title>
+		<title>getColorSection</title>
 		<style type='text/css'>
 			canvas{
 				border:1px solid #000f;
@@ -127,6 +127,7 @@
 				rScan=slf.document.getElementById('scanRValue'),
 				gScan=slf.document.getElementById('scanGValue'),
 				bScan=slf.document.getElementById('scanBValue'),
+				/*initial value*/
 				scan=getColorSection(C,[+rScan.value,+gScan.value,+bScan.value]);
 			//### file reader event ###
 			_IMG.addEventListener('load',function(){
@@ -175,7 +176,7 @@
 	</script>
 	</body>
 </html>
-<!-- getColorSection_web.html -->
+<!-- getColorSection/index.html -->
 <!--/*
 *          MIT License
 *
