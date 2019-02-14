@@ -82,15 +82,16 @@
 				<!-- image scan -->
 				<fieldset id='scan'>
 					<legend><b>Scan area</b></legend>
+						<p>Top left corner is <code>(x,y)=(0,0)</code> in pixels</p>
 						<ol>
 							<div id='scanArea'>
-								<li><label>horizontal coordinates<input type='number' id='scanX' value=0 min=0 step=1 required></label></li>
+								<li><label>horizontal coordinate in pixels<input type='number' id='scanX' value=0 min=0 step=1 required></label></li>
 								<li><label>width to scan<input type='number' id='scanWidth' value=1 min=1 step=1 required></label></li>
 							</div>
 							<!-- rgb coefficient -->
 							<li>
 								<div id='rgbCoefficient'>
-									<pre><code>RGB color coefficients to scan:<br>rgb(R,G,B)=r*R+g*G+b*B</code></pre>
+									<p>RGB color coefficients to scan: <code>rgb(R,G,B)=r*R+g*G+b*B</code></p>
 										<ul>
 											<li><label>r<input type='number' id='scanRValue' value=1 min=0 step=0.02 required></label></li>
 											<li><label>g<input type='number' id='scanGValue' value=1 min=0 step=0.02 required></label></li>
@@ -167,18 +168,14 @@
 				cOut.width=220;
 				cOut.height=Height.value;
 				cOut.getContext('2d').clearRect(0,0,cOut.width,cOut.height);
-				var O=scan(cOut,xScan.value,wScan.value,false);
-				console.log(scan.LOG);
-				O=null;
+				scan(cOut,xScan.value,wScan.value,false);
 			},false);
 			FixedScanB.addEventListener('click',()=>{
 				//new value for width and height of canvas to output
 				cOut.width=Width.value;
 				cOut.height=Height.value;
 				cOut.getContext('2d').drawImage(_IMG,0,0);
-				var O=scan(cOut,xScan.value,wScan.value,true);
-				console.log(scan.LOG);
-				O=null;
+				scan(cOut,xScan.value,wScan.value,true);
 			},false);
 			ScaleB.addEventListener('click',()=>{
 				colorScale(cOut);
