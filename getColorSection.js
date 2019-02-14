@@ -11,35 +11,35 @@
 * `var scan=getColorSection(srcCanvas,[r,g,b]);`
 * it returns function to scan target canvas element
 *
-*--- Parameters ---
-* - `srcCanvas`: target canvas element to scan
-* - `rgb`: coefficient array (`[r,g,b]`) for a value V=r*R+g*G+b*B
+*	--- Parameters ---
+*	- `srcCanvas`: target canvas element to scan
+*	- `rgb`: coefficient array (`[r,g,b]`) for a value `rgb(R,G,B)=r*R+g*G+b*B`
 *
 *--- Returned function ---
 * `scan(canvas,x,w,left);`
 * it scans `srcCanvas` element and draws a columnar color section on target canvas element
-* this function also returns a log object `{X,width,rgbC,Log()}`
 *
-*--- Parameters for Returned function ---
-* - `canvas`: target canvas element to draw color section
-* - `x`: x-coordinate
-* - `w`: width to scan
-* - `left`: an optional boolean value to fix left side coordinates of section when it is true
+*	--- Parameters for Returned function ---
+*	- `canvas`: target canvas element to draw color section
+*	- `x`: x-coordinate
+*	- `w`: width to scan
+*	- `left`: an optional boolean value to fix left side coordinates of section when it is true
 *
-*--- log object ---
-* `{X,width,rgbC,Log()}`
+*	--- Property of returned function ---
+*	`scan.LOG;`
+*	this returned function has a property of LOG object as follows:
 *
-* - `X`: x-coordinate
-* - `width`: width to scan
-* - `rgbC`: coefficient array (`[r,g,b]`) for a value V=r*R+g*G+b*B
-* - `Log()`: a method to call scanned values for the columnar color section
+*	- `X`: x-coordinate
+*	- `width`: width to scan
+*	- `rgbC`: coefficient array (`[r,g,b]`) for a value `rgb(R,G,B)=r*R+g*G+b*B`
+*	- `log`: scanned values for the columnar color section
 *--------------------------------------------------------------------
 * This software is modified version of `getColorSection.js` version 1.0 by Yuji SODE
 * [Reference]
 * - Sode, Y. 2015. getColorSection.js (see `getColorSection_2015.js`)
 */
 //===================================================================
-//Tool that draws a columnar color section by given rgb values of the canvas
+//Tool that draws a columnar color section by given rgb values of the canvas tag
 function getColorSection(srcCanvas,rgb){
 	// - srcCanvas: target canvas element to scan
 	// - rgb: coefficient array ([r,g,b]) for a value V=r*R+g*G+b*B
@@ -54,7 +54,7 @@ function getColorSection(srcCanvas,rgb){
 		// - DATA: array of [width, ..., width]
 		//   width is relative value to max value
 		// - left: an optional boolean value to fix left side coordinates of section when it is true
-		var X=x0,Y=y0,ctx=canvas.getContext('2d'),W=0,H=0,R=0,G=0,B=0,_log='nodata';
+		var X=x0,Y=y0,ctx=canvas.getContext('2d'),W=0,H=0,R=0,G=0,B=0;
 		X=!left?0:X;
 		for(var i=0;i<DATA.length;i+=1){
 			DATA[i]=!DATA[i]?0:DATA[i];
@@ -96,6 +96,7 @@ function getColorSection(srcCanvas,rgb){
 		// - left: an optional boolean value to fix left side coordinates of section when it is true
 		w=w<1?+1:+w;
 		x=x<0?0:+x;
+		scan.LOG={};
 		//<generation of worker>
 		var blob=new Blob([scpt],{type:'text/javascript'});
 		var objUrl=slf.URL.createObjectURL(blob);
@@ -106,7 +107,10 @@ function getColorSection(srcCanvas,rgb){
 		wk.addEventListener('message',function(e){
 			var d=e.data;
 			wk.terminate();
-			_log=d.join();
+			scan.LOG.X=x;
+			scan.LOG.width=w;
+			scan.LOG.rgbC=rgb;
+			scan.LOG.log=d.join();
 			getColumnarSection(canvas,x,0,100,d,left);
 		},true);
 		//if error in worker
@@ -115,7 +119,6 @@ function getColorSection(srcCanvas,rgb){
 			wk.terminate();
 		}, true);
 		wk.postMessage(srcCanvas.getContext('2d').getImageData(x,0,w,srcCanvas.height));
-		return {X:x,width:w,rgbC:rgb,Log:function(){return _log;}};
 	};
 	return scan;
 }

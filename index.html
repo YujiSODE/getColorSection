@@ -168,6 +168,7 @@
 				cOut.height=Height.value;
 				cOut.getContext('2d').clearRect(0,0,cOut.width,cOut.height);
 				var O=scan(cOut,xScan.value,wScan.value,false);
+				console.log(scan.LOG);
 				O=null;
 			},false);
 			FixedScanB.addEventListener('click',()=>{
@@ -176,6 +177,7 @@
 				cOut.height=Height.value;
 				cOut.getContext('2d').drawImage(_IMG,0,0);
 				var O=scan(cOut,xScan.value,wScan.value,true);
+				console.log(scan.LOG);
 				O=null;
 			},false);
 			ScaleB.addEventListener('click',()=>{
