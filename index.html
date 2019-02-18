@@ -65,6 +65,8 @@
 				<button id='fixedScanB'>Fixed Scan</button>
 				<!-- buttons to show color scale -->
 				<button id='scaleB'>Color Scale</button>
+				<!-- buttons to show log -->
+				<button id='logB'>Log</button>
 			</div>
 			<form id='control'>
 				<!-- source image and size of canvas -->
@@ -119,6 +121,7 @@
 				ScanB=slf.document.getElementById('scanB'),
 				FixedScanB=slf.document.getElementById('fixedScanB'),
 				ScaleB=slf.document.getElementById('scaleB'),
+				LogB=slf.document.getElementById('logB'),
 				/*form inputs: Canvas*/
 				img=slf.document.getElementById('inputImg'),
 				imgLength=0,
@@ -179,6 +182,12 @@
 			},false);
 			ScaleB.addEventListener('click',()=>{
 				colorScale(cOut);
+			},false);
+			LogB.addEventListener('click',()=>{
+				slf.alert(`Filename:${imgLength>0?img.files[0].name:'no data'}
+Horizontal coordinate in pixels:${xScan.value}
+Width to scan:${wScan.value}
+RGB color coefficients:\[r,g,b\]=\[${rScan.value},${gScan.value},${bScan.value}\]`);
 			},false);
 		}());
 	</script>
