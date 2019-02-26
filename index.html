@@ -115,6 +115,7 @@
 				C=slf.document.getElementById('cvs_getColorSection'),
 				cOut=slf.document.getElementById('outputCvs'),
 				reader=new FileReader(),
+				__LOG='',
 				/*buttons*/
 				LeftB=slf.document.getElementById('leftB'),
 				RightB=slf.document.getElementById('rightB'),
@@ -184,10 +185,13 @@
 				colorScale(cOut);
 			},false);
 			LogB.addEventListener('click',()=>{
-				slf.alert(`Filename:${imgLength>0?img.files[0].name:'no data'}
+				__LOG=`\"getColorSection\"
+Filename:${imgLength>0?img.files[0].name:'no data'}
 Horizontal coordinate in pixels:${xScan.value}
 Width to scan:${wScan.value}
-RGB color coefficients:\[r,g,b\]=\[${rScan.value},${gScan.value},${bScan.value}\]`);
+RGB color coefficients:\[r,g,b\]=\[${rScan.value},${gScan.value},${bScan.value}\]`;
+				slf.alert(__LOG);
+				slf.console.log(__LOG);
 			},false);
 		}());
 	</script>
