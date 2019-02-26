@@ -19,3 +19,4 @@ Visual information is one of main factors that are employed to draw geological c
 # Scripts
 - `getColorSection.js`: main script
 - `colorScale.js`: script to draw RGB color scale
+- `index.html`: GUI
