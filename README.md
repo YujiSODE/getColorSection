@@ -8,6 +8,8 @@ GitHub: https://github.com/YujiSODE/getColorSection
 >This software is modified version of `getColorSection.js version 1.0` by Yuji SODE  
 >\[Reference\] Sode, Y. 2015. getColorSection.js (see `getColorSection_2015.js`)
 ______
+![resultsamples](https://user-images.githubusercontent.com/19919184/53384050-efb8a080-39bc-11e9-8d94-dcd6e8b21367.png)  
+
 ## Concept
 Image analysis based on RGB color can be applied to generating columnar section in geological study.  
 It is easy to describe vertical \(or horizontal\) changes with columnar section.  
