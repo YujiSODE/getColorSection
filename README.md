@@ -16,7 +16,7 @@ It is easy to describe vertical \(or horizontal\) changes with columnar section.
 Visual information composed of two-dimensional RGB color data, reflects morphological and physicochemical aspects of an object.  
 Visual information is one of main factors that are employed to draw geological columnar section based on observing outcrops.
 
-# Scripts
+## Scripts
 - `getColorSection.js`: main script
 - `colorScale.js`: script to draw RGB color scale
 - `index.html`: GUI
