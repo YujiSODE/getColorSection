@@ -27,7 +27,7 @@
 *
 *	--- Property of returned function ---
 *	`scan.LOG;`
-*	this returned function has a property of LOG object as follows:
+*	`scan.LOG` is LOG object as follows:
 *
 *	- `X`: x-coordinate
 *	- `width`: width to scan
